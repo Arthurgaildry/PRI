@@ -1,5 +1,6 @@
 #include "FenServeur.h"
 #include "sqlconnection.h"
+#include <QtDebug>
 
 FenServeur::FenServeur()
 {
@@ -94,16 +95,17 @@ void FenServeur::deconnexionClient()
     socket->deleteLater();
 }
 
-void FenServeur::envoyerATous(const QString &message)
+void FenServeur::envoyerATous(QString message)
 {
+    qDebug() << message;
     SqlConnection con;
-
+    QString id = message;
     // Préparation du paquet
     QByteArray paquet;
     QDataStream out(&paquet, QIODevice::WriteOnly);
 
     out << (quint16) 0; // On écrit 0 au début du paquet pour réserver la place pour écrire la taille
-    out << con.connection();
+    out << con.connection(id);
     // On ajoute le message à la suite
     out.device()->seek(0); // On se replace au début du paquet
     out << (quint16) (paquet.size() - sizeof(quint16)); // On écrase le 0 qu'on avait réservé par la longueur du message

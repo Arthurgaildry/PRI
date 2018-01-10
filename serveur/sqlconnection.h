@@ -11,7 +11,7 @@ class SqlConnection
 {
 public:
     SqlConnection();
-    QString connection();
+    QString connection(QString );
 };
 
 #endif // SQLCONNECTION_H

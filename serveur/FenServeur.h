@@ -14,7 +14,7 @@ class FenServeur : public QWidget
 
     public:
         FenServeur();
-        void envoyerATous(const QString &message);
+        void envoyerATous(QString message);
 
     private slots:
         void nouvelleConnexion();

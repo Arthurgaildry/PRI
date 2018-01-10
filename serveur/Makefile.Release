@@ -17,7 +17,7 @@ CXXFLAGS      = -pipe -fno-keep-inline-dllexport -O2 -std=gnu++0x -frtti -Wall -
 INCPATH       = -I. -I. -IC:\Qt\Qt5.6.2\5.6\mingw49_32\include -IC:\Qt\Qt5.6.2\5.6\mingw49_32\include\QtWidgets -IC:\Qt\Qt5.6.2\5.6\mingw49_32\include\QtGui -IC:\Qt\Qt5.6.2\5.6\mingw49_32\include\QtANGLE -IC:\Qt\Qt5.6.2\5.6\mingw49_32\include\QtNetwork -IC:\Qt\Qt5.6.2\5.6\mingw49_32\include\QtSql -IC:\Qt\Qt5.6.2\5.6\mingw49_32\include\QtCore -Irelease -IC:\Qt\Qt5.6.2\5.6\mingw49_32\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        -lmingw32 -LC:\Qt\Qt5.6.2\5.6\mingw49_32\lib C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libqtmain.a -lshell32 -LC:\utils\my_sql\my_sql\lib -LC:\utils\postgresql\pgsql\lib C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Widgets.a C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Gui.a C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Network.a C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Sql.a C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Core.a 
+LIBS        =        -lmingw32 -LC:\Qt\Qt5.6.2\5.6\mingw49_32\lib C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libqtmain.a -lshell32 -LC:\utils\my_sql\my_sql\lib -LC:\utils\postgresql\pgsql\lib -LC:\wamp\bin\mysql\mysql5.7.19\lib -llibmysql -llibmysqld C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Widgets.a C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Gui.a C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Network.a C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Sql.a C:\Qt\Qt5.6.2\5.6\mingw49_32\lib\libQt5Core.a 
 QMAKE         = C:\Qt\Qt5.6.2\5.6\mingw49_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl

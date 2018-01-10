@@ -31,7 +31,7 @@ void FenClient::on_boutonEnvoyer_clicked()
     QDataStream out(&paquet, QIODevice::WriteOnly);
 
     // On prépare le paquet à envoyer
-    QString messageAEnvoyer = tr("<strong>") + pseudo->text() +tr("</strong> : ") + message->text();
+    QString messageAEnvoyer = message->text();
 
     out << (quint16) 0;
     out << messageAEnvoyer;
