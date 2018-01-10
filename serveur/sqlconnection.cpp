@@ -10,11 +10,11 @@ SqlConnection::SqlConnection()
 
 
 QString SqlConnection::connection(){
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL3");
     db.setHostName("localhost");
     db.setDatabaseName("bdd_pri");
     db.setUserName("root");
-    db.setPassword("root");
+    db.setPassword("");
     if(!db.open())
     {
          //QMessageBox::critical(this, "Erreur", "Erreur de connexion à la bdd.");
