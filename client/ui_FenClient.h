@@ -38,8 +38,6 @@ public:
     QPushButton *boutonConnexion;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
-    QLabel *label_5;
-    QLabel *label_6;
     QTextEdit *listeMessages;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_3;
@@ -96,23 +94,6 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        label_5 = new QLabel(FenClient);
-        label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setPixmap(QPixmap(QString::fromUtf8("chat.png")));
-
-        verticalLayout->addWidget(label_5);
-
-        label_6 = new QLabel(FenClient);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        QFont font;
-        font.setPointSize(11);
-        font.setBold(false);
-        font.setWeight(50);
-        label_6->setFont(font);
-        label_6->setAlignment(Qt::AlignCenter);
-
-        verticalLayout->addWidget(label_6);
-
 
         horizontalLayout->addLayout(verticalLayout);
 
@@ -170,7 +151,6 @@ public:
         serveurIP->setText(QApplication::translate("FenClient", "127.0.0.1", 0));
         label_2->setText(QApplication::translate("FenClient", "Port du serveur :", 0));
         boutonConnexion->setText(QApplication::translate("FenClient", "Connexion", 0));
-        label_6->setText(QApplication::translate("FenClient", "ZeroChat", 0));
         label_3->setText(QApplication::translate("FenClient", "Pseudo :", 0));
         label_4->setText(QApplication::translate("FenClient", "Message :", 0));
         boutonEnvoyer->setText(QApplication::translate("FenClient", "Envoyer", 0));

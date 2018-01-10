@@ -12,7 +12,7 @@ FenServeur::FenServeur()
     layout->addWidget(boutonQuitter);
     setLayout(layout);
 
-    setWindowTitle(tr("ZeroChat - Serveur"));
+    setWindowTitle(tr("Projet PRI - Serveur"));
 
     // Gestion du serveur
     serveur = new QTcpServer(this);
