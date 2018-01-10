@@ -146,7 +146,7 @@ public:
 
     void retranslateUi(QWidget *FenClient)
     {
-        FenClient->setWindowTitle(QApplication::translate("FenClient", "ZeroChat - Client", 0));
+        FenClient->setWindowTitle(QApplication::translate("FenClient", "Projet PRI - Client", 0));
         label->setText(QApplication::translate("FenClient", "IP du serveur :", 0));
         serveurIP->setText(QApplication::translate("FenClient", "127.0.0.1", 0));
         label_2->setText(QApplication::translate("FenClient", "Port du serveur :", 0));
