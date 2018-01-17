@@ -47,21 +47,11 @@ void FenClient::on_boutonEnvoyer_clicked()
     */
     if(radioButton_Po->isChecked()){
     listeMessages->append(tr("<em>Police...</em>"));
-    who="1";
-
-    }
-     else if(radioButton_Med->isChecked()){
-    who="2";
-    listeMessages->append(tr("<em>Medecin...</em>"));
-    }
-     else if(radioButton_Aut->isChecked()){
-    who="3";
-    listeMessages->append(tr("<em>Autre...</em>"));
-
-    }
-
+    who="pol";
+    messageAEnvoyer = who + messageAEnvoyer;
+    listeMessages->append(messageAEnvoyer);
     out << (quint16) 0;
-    out << messageAEnvoyer + who;
+    out <<messageAEnvoyer;
     out.device()->seek(0);
     out << (quint16) (paquet.size() - sizeof(quint16));
 
@@ -69,6 +59,41 @@ void FenClient::on_boutonEnvoyer_clicked()
 
     message->clear(); // On vide la zone d'écriture du message
     message->setFocus(); // Et on remet le curseur à l'intérieur
+    }
+     else if(radioButton_Med->isChecked()){
+    who="med";
+    listeMessages->append(tr("<em>Medecin...</em>"));
+    messageAEnvoyer = who + messageAEnvoyer;
+    listeMessages->append(messageAEnvoyer);
+    out << (quint16) 0;
+    out <<messageAEnvoyer;
+    out.device()->seek(0);
+    out << (quint16) (paquet.size() - sizeof(quint16));
+
+    socket->write(paquet); // On envoie le paquet
+
+    message->clear(); // On vide la zone d'écriture du message
+    message->setFocus(); // Et on remet le curseur à l'intérieur
+    }
+     else if(radioButton_Aut->isChecked()){
+    who="aut";
+    listeMessages->append(tr("<em>Autre...</em>"));
+    messageAEnvoyer = who + messageAEnvoyer;
+    listeMessages->append(messageAEnvoyer);
+    out << (quint16) 0;
+    out <<messageAEnvoyer;
+    out.device()->seek(0);
+    out << (quint16) (paquet.size() - sizeof(quint16));
+
+    socket->write(paquet); // On envoie le paquet
+
+    message->clear(); // On vide la zone d'écriture du message
+    message->setFocus(); // Et on remet le curseur à l'intérieur
+
+    }else{
+    listeMessages->append(tr("<em>Veuillez cocher un bouton...</em>"));
+
+    }
 
 }
 
