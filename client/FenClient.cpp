@@ -35,10 +35,12 @@ void FenClient::on_boutonEnvoyer_clicked()
 
     out << (quint16) 0;
     out << messageAEnvoyer;
+    // out << Valeur bianaire reçu ? la place de out<< messageAEnvoyer
     out.device()->seek(0);
     out << (quint16) (paquet.size() - sizeof(quint16));
 
     socket->write(paquet); // On envoie le paquet
+    // socket->write(donnée_binaire)
 
     message->clear(); // On vide la zone d'écriture du message
     message->setFocus(); // Et on remet le curseur à l'intérieur
