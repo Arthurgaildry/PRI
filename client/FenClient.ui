@@ -101,26 +101,30 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QRadioButton" name="radioButton_Po">
        <property name="text">
-        <string>Pseudo :</string>
+        <string>Police</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="pseudo">
-       <property name="maximumSize">
-        <size>
-         <width>100</width>
-         <height>16777215</height>
-        </size>
+      <widget class="QRadioButton" name="radioButton_Med">
+       <property name="text">
+        <string>Medecin</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButton_Aut">
+       <property name="text">
+        <string>Autre</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Message :</string>
+        <string>Authentification</string>
        </property>
       </widget>
      </item>

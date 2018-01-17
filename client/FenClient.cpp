@@ -31,8 +31,9 @@ void FenClient::on_boutonEnvoyer_clicked()
     QDataStream out(&paquet, QIODevice::WriteOnly);
 
     // On prépare le paquet à envoyer
-    QString messageAEnvoyer = message->text();
 
+    QString messageAEnvoyer = message->text();
+    /*
     out << (quint16) 0;
     out << messageAEnvoyer;
     out.device()->seek(0);
@@ -42,6 +43,17 @@ void FenClient::on_boutonEnvoyer_clicked()
 
     message->clear(); // On vide la zone d'écriture du message
     message->setFocus(); // Et on remet le curseur à l'intérieur
+    */
+    if(radioButton_Po->isChecked()){
+    listeMessages->append(tr("<em>Po...</em>"));
+
+    }
+     else if(radioButton_Med->isChecked()){
+    }
+     else if(radioButton_Aut->isChecked()){
+
+    }
+
 }
 
 // Appuyer sur la touche Entrée a le même effet que cliquer sur le bouton "Envoyer"
@@ -114,4 +126,10 @@ void FenClient::erreurSocket(QAbstractSocket::SocketError erreur)
     }
 
     boutonConnexion->setEnabled(true);
+}
+
+
+void FenClient::on_radioButton_Aut_clicked()
+{
+
 }
