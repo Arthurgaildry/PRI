@@ -25,8 +25,16 @@ class FenClient : public QWidget, private Ui::FenClient
         void deconnecte();
         void erreurSocket(QAbstractSocket::SocketError erreur);
 
-    private:
-        QTcpSocket *socket; // Représente le serveur
+        void on_radioButton_Po_toggled(bool checked);
+
+        void on_radioButton_Aut_toggled(bool checked);
+
+        void on_radioButton_Aut_clicked();
+
+        void on_radioButton_Med_clicked();
+
+private:
+        QTcpSocket *socket; // Reprï¿½sente le serveur
         quint16 tailleMessage;
 };
 

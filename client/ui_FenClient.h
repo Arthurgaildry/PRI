@@ -18,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
@@ -40,6 +41,9 @@ public:
     QVBoxLayout *verticalLayout;
     QTextEdit *listeMessages;
     QHBoxLayout *horizontalLayout_2;
+    QRadioButton *radioButton_Po;
+    QRadioButton *radioButton_Med;
+    QRadioButton *radioButton_Aut;
     QLabel *label_4;
     QLineEdit *message;
     QPushButton *boutonEnvoyer;
@@ -106,6 +110,22 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+
+        radioButton_Po = new QRadioButton(FenClient);
+        radioButton_Po->setObjectName(QStringLiteral("radioButton_Po"));
+
+        horizontalLayout_2->addWidget(radioButton_Po);
+
+        radioButton_Med = new QRadioButton(FenClient);
+        radioButton_Med->setObjectName(QStringLiteral("radioButton_Med"));
+
+        horizontalLayout_2->addWidget(radioButton_Med);
+
+        radioButton_Aut = new QRadioButton(FenClient);
+        radioButton_Aut->setObjectName(QStringLiteral("radioButton_Aut"));
+
+        horizontalLayout_2->addWidget(radioButton_Aut);
+
         label_4 = new QLabel(FenClient);
         label_4->setObjectName(QStringLiteral("label_4"));
 
@@ -139,6 +159,10 @@ public:
         label_2->setText(QApplication::translate("FenClient", "Port du serveur :", 0));
         boutonConnexion->setText(QApplication::translate("FenClient", "Connexion", 0));
         label_4->setText(QApplication::translate("FenClient", "Message :", 0));
+        radioButton_Po->setText(QApplication::translate("FenClient", "Police", 0));
+        radioButton_Med->setText(QApplication::translate("FenClient", "Medecin", 0));
+        radioButton_Aut->setText(QApplication::translate("FenClient", "Autre", 0));
+        label_4->setText(QApplication::translate("FenClient", "Authentification", 0));
         boutonEnvoyer->setText(QApplication::translate("FenClient", "Envoyer", 0));
     } // retranslateUi
 

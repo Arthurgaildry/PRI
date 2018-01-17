@@ -31,8 +31,10 @@ void FenClient::on_boutonEnvoyer_clicked()
     QDataStream out(&paquet, QIODevice::WriteOnly);
 
     // On prépare le paquet à envoyer
-    QString messageAEnvoyer = message->text();
 
+    QString messageAEnvoyer = message->text();
+    QString who;
+    /*
     out << (quint16) 0;
     out << messageAEnvoyer;
     out.device()->seek(0);
@@ -42,6 +44,57 @@ void FenClient::on_boutonEnvoyer_clicked()
 
     message->clear(); // On vide la zone d'écriture du message
     message->setFocus(); // Et on remet le curseur à l'intérieur
+    */
+    if(radioButton_Po->isChecked()){
+    listeMessages->append(tr("<em>Police...</em>"));
+    who="pol";
+    messageAEnvoyer = who + messageAEnvoyer;
+    listeMessages->append(messageAEnvoyer);
+    out << (quint16) 0;
+    out <<messageAEnvoyer;
+    out.device()->seek(0);
+    out << (quint16) (paquet.size() - sizeof(quint16));
+
+    socket->write(paquet); // On envoie le paquet
+
+    message->clear(); // On vide la zone d'écriture du message
+    message->setFocus(); // Et on remet le curseur à l'intérieur
+    }
+     else if(radioButton_Med->isChecked()){
+    who="med";
+    listeMessages->append(tr("<em>Medecin...</em>"));
+    messageAEnvoyer = who + messageAEnvoyer;
+    listeMessages->append(messageAEnvoyer);
+    out << (quint16) 0;
+    out <<messageAEnvoyer;
+    out.device()->seek(0);
+    out << (quint16) (paquet.size() - sizeof(quint16));
+
+    socket->write(paquet); // On envoie le paquet
+
+    message->clear(); // On vide la zone d'écriture du message
+    message->setFocus(); // Et on remet le curseur à l'intérieur
+    }
+     else if(radioButton_Aut->isChecked()){
+    who="aut";
+    listeMessages->append(tr("<em>Autre...</em>"));
+    messageAEnvoyer = who + messageAEnvoyer;
+    listeMessages->append(messageAEnvoyer);
+    out << (quint16) 0;
+    out <<messageAEnvoyer;
+    out.device()->seek(0);
+    out << (quint16) (paquet.size() - sizeof(quint16));
+
+    socket->write(paquet); // On envoie le paquet
+
+    message->clear(); // On vide la zone d'écriture du message
+    message->setFocus(); // Et on remet le curseur à l'intérieur
+
+    }else{
+    listeMessages->append(tr("<em>Veuillez cocher un bouton...</em>"));
+
+    }
+
 }
 
 // Appuyer sur la touche Entrée a le même effet que cliquer sur le bouton "Envoyer"
@@ -114,4 +167,25 @@ void FenClient::erreurSocket(QAbstractSocket::SocketError erreur)
     }
 
     boutonConnexion->setEnabled(true);
+}
+
+
+void FenClient::on_radioButton_Po_toggled(bool checked)
+{
+
+}
+
+void FenClient::on_radioButton_Med_clicked()
+{
+
+}
+
+void FenClient::on_radioButton_Aut_clicked()
+{
+
+}
+
+void FenClient::on_radioButton_Aut_toggled(bool checked)
+{
+
 }
