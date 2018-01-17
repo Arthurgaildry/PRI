@@ -33,6 +33,7 @@ void FenClient::on_boutonEnvoyer_clicked()
     // On prépare le paquet à envoyer
 
     QString messageAEnvoyer = message->text();
+    QString who;
     /*
     out << (quint16) 0;
     out << messageAEnvoyer;
@@ -45,14 +46,29 @@ void FenClient::on_boutonEnvoyer_clicked()
     message->setFocus(); // Et on remet le curseur à l'intérieur
     */
     if(radioButton_Po->isChecked()){
-    listeMessages->append(tr("<em>Po...</em>"));
+    listeMessages->append(tr("<em>Police...</em>"));
+    who="1";
 
     }
      else if(radioButton_Med->isChecked()){
+    who="2";
+    listeMessages->append(tr("<em>Medecin...</em>"));
     }
      else if(radioButton_Aut->isChecked()){
+    who="3";
+    listeMessages->append(tr("<em>Autre...</em>"));
 
     }
+
+    out << (quint16) 0;
+    out << messageAEnvoyer + who;
+    out.device()->seek(0);
+    out << (quint16) (paquet.size() - sizeof(quint16));
+
+    socket->write(paquet); // On envoie le paquet
+
+    message->clear(); // On vide la zone d'écriture du message
+    message->setFocus(); // Et on remet le curseur à l'intérieur
 
 }
 
@@ -129,7 +145,22 @@ void FenClient::erreurSocket(QAbstractSocket::SocketError erreur)
 }
 
 
+void FenClient::on_radioButton_Po_toggled(bool checked)
+{
+
+}
+
+void FenClient::on_radioButton_Med_clicked()
+{
+
+}
+
 void FenClient::on_radioButton_Aut_clicked()
+{
+
+}
+
+void FenClient::on_radioButton_Aut_toggled(bool checked)
 {
 
 }

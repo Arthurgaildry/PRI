@@ -31,6 +31,8 @@ class FenClient : public QWidget, private Ui::FenClient
 
         void on_radioButton_Aut_clicked();
 
+        void on_radioButton_Med_clicked();
+
 private:
         QTcpSocket *socket; // Repr�sente le serveur
         quint16 tailleMessage;
