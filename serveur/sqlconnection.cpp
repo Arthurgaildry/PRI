@@ -9,7 +9,7 @@ SqlConnection::SqlConnection()
 }
 
 
-QString SqlConnection::connection(QString id){
+QString SqlConnection::connection(QString id){// id---> mess (mess0/mess1)
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("localhost");
     db.setDatabaseName("bdd_pri");
@@ -23,7 +23,7 @@ QString SqlConnection::connection(QString id){
     {
          //QMessageBox::critical(this, "Erreur", "Erreur de connexion à la bdd.");
     } else {
-        QSqlQuery query("SELECT * FROM clients where id= ? ");// Ici associer la clé à l'id pour identifier les données à afficher.
+        QSqlQuery query("SELECT * FROM clients where id= ? ");//id--> mess1  Ici associer la clé à l'id pour identifier les données à afficher.
         query.addBindValue(id.toInt());//Transformation d'id en int pour l'utiliser dans le programme ,!!!! verifier si int marche avec clé binaire
         if (! query.exec()){
              return QString(); // erreur
@@ -58,19 +58,19 @@ QString SqlConnection::connection(QString id){
                               P[2]=4;
                               P[3]=5;
                               P[4]=6;
-                              if(choix=medecin){
+                              if(mess0=medecin){
                                 for(int i=0; i<6; i++){
                                     rec.append(query.value(M[i]).toString());
                                     rec.append("  ");
                                 }
                               }
-                                if(choix=police){
+                                if(mess0=police){
                                      for(int i=0; i<4; i++){
                                          rec.append(query.value(P[i]).toString());
                                          rec.append("  ");
                                      }
                                 }
-                                if(choix=autre){
+                                if(mess0=autre){
                                      for(int i=0; i<2; i++){
                                          rec.append(query.value(A[i]).toString());
                                          rec.append("  ");
