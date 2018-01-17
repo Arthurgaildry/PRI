@@ -23,17 +23,24 @@ QString SqlConnection::connection(QString id){
     {
          //QMessageBox::critical(this, "Erreur", "Erreur de connexion à la bdd.");
     } else {
-        QSqlQuery query("SELECT * FROM clients where id= ? ");
-        query.addBindValue(id.toInt());
+        QSqlQuery query("SELECT * FROM clients where id= ? ");// Ici associer la clé à l'id pour identifier les données à afficher.
+        query.addBindValue(id.toInt());//Transformation d'id en int pour l'utiliser dans le programme ,!!!! verifier si int marche avec clé binaire
         if (! query.exec()){
              return QString(); // erreur
         }
 
         if(query.first()){
-              while(i<8){
+              while(i<6){//  Recuperation des 6 lignes de la table client pour police
                 rec.append(query.value(i).toString());
                 rec.append("  ");
                 i=i+1;
+
+
+
+
+
+
+
 
             }
 
