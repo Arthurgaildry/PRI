@@ -40,8 +40,6 @@ public:
     QVBoxLayout *verticalLayout;
     QTextEdit *listeMessages;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *label_3;
-    QLineEdit *pseudo;
     QLabel *label_4;
     QLineEdit *message;
     QPushButton *boutonEnvoyer;
@@ -108,17 +106,6 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_3 = new QLabel(FenClient);
-        label_3->setObjectName(QStringLiteral("label_3"));
-
-        horizontalLayout_2->addWidget(label_3);
-
-        pseudo = new QLineEdit(FenClient);
-        pseudo->setObjectName(QStringLiteral("pseudo"));
-        pseudo->setMaximumSize(QSize(100, 16777215));
-
-        horizontalLayout_2->addWidget(pseudo);
-
         label_4 = new QLabel(FenClient);
         label_4->setObjectName(QStringLiteral("label_4"));
 
@@ -151,7 +138,6 @@ public:
         serveurIP->setText(QApplication::translate("FenClient", "127.0.0.1", 0));
         label_2->setText(QApplication::translate("FenClient", "Port du serveur :", 0));
         boutonConnexion->setText(QApplication::translate("FenClient", "Connexion", 0));
-        label_3->setText(QApplication::translate("FenClient", "Pseudo :", 0));
         label_4->setText(QApplication::translate("FenClient", "Message :", 0));
         boutonEnvoyer->setText(QApplication::translate("FenClient", "Envoyer", 0));
     } // retranslateUi
