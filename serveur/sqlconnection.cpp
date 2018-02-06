@@ -61,9 +61,11 @@ QString SqlConnection::connection(QString mdp){// mdp---> mess (mess0)
         if (! query2.exec()){
              return QString(); // erreur
         }
-    if(!query2.exec()){
-        cout<<'Mot de passe incorrecte';
-    }
+  /*  if(query2.){
+
+        return "Mot de passe incorrecte";
+    }*/
+
     if(query2.exec()){
         if(query.first()){
            /*   while(i<7){//  Recuperation des 7 lignes de la table client

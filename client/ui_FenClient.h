@@ -110,7 +110,6 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-
         radioButton_Po = new QRadioButton(FenClient);
         radioButton_Po->setObjectName(QStringLiteral("radioButton_Po"));
 
@@ -133,6 +132,7 @@ public:
 
         message = new QLineEdit(FenClient);
         message->setObjectName(QStringLiteral("message"));
+        message->setEchoMode(QLineEdit::Password);
 
         horizontalLayout_2->addWidget(message);
 
@@ -158,7 +158,6 @@ public:
         serveurIP->setText(QApplication::translate("FenClient", "127.0.0.1", 0));
         label_2->setText(QApplication::translate("FenClient", "Port du serveur :", 0));
         boutonConnexion->setText(QApplication::translate("FenClient", "Connexion", 0));
-        label_4->setText(QApplication::translate("FenClient", "Message :", 0));
         radioButton_Po->setText(QApplication::translate("FenClient", "Police", 0));
         radioButton_Med->setText(QApplication::translate("FenClient", "Medecin", 0));
         radioButton_Aut->setText(QApplication::translate("FenClient", "Autre", 0));
