@@ -16,12 +16,12 @@ FenClient::FenClient()
 // Tentative de connexion au serveur
 void FenClient::on_boutonConnexion_clicked()
 {
-    // On annonce sur la fenêtre qu'on est en train de se connecter
+    // On annonce sur la fenï¿½tre qu'on est en train de se connecter
     listeMessages->append(tr("<em>Tentative de connexion en cours...</em>"));
     boutonConnexion->setEnabled(false);
 
-    socket->abort(); // On désactive les connexions précédentes s'il y en a
-    socket->connectToHost(serveurIP->text(), serveurPort->value()); // On se connecte au serveur demandé
+    socket->abort(); // On dï¿½sactive les connexions prï¿½cï¿½dentes s'il y en a
+    socket->connectToHost(serveurIP->text(), serveurPort->value()); // On se connecte au serveur demandï¿½
 }
 
 // Envoi d'un message au serveur
@@ -30,85 +30,33 @@ void FenClient::on_boutonEnvoyer_clicked()
     QByteArray paquet;
     QDataStream out(&paquet, QIODevice::WriteOnly);
 
-    // On prépare le paquet à envoyer
-
+    // On prï¿½pare le paquet ï¿½ envoyer
     QString messageAEnvoyer = message->text();
-    QString who;
-    /*
+
     out << (quint16) 0;
     out << messageAEnvoyer;
+    // 
     out.device()->seek(0);
     out << (quint16) (paquet.size() - sizeof(quint16));
 
     socket->write(paquet); // On envoie le paquet
 
-    message->clear(); // On vide la zone d'écriture du message
-    message->setFocus(); // Et on remet le curseur à l'intérieur
-    */
-    if(radioButton_Po->isChecked()){
-    listeMessages->append(tr("<em>Police...</em>"));
-    who="pol";
-    messageAEnvoyer = who + messageAEnvoyer;
-    listeMessages->append(messageAEnvoyer);
-    out << (quint16) 0;
-    out <<messageAEnvoyer;
-    out.device()->seek(0);
-    out << (quint16) (paquet.size() - sizeof(quint16));
-
-    socket->write(paquet); // On envoie le paquet
-
-    message->clear(); // On vide la zone d'écriture du message
-    message->setFocus(); // Et on remet le curseur à l'intérieur
-    }
-     else if(radioButton_Med->isChecked()){
-    who="med";
-    listeMessages->append(tr("<em>Medecin...</em>"));
-    messageAEnvoyer = who + messageAEnvoyer;
-    listeMessages->append(messageAEnvoyer);
-    out << (quint16) 0;
-    out <<messageAEnvoyer;
-    out.device()->seek(0);
-    out << (quint16) (paquet.size() - sizeof(quint16));
-
-    socket->write(paquet); // On envoie le paquet
-
-    message->clear(); // On vide la zone d'écriture du message
-    message->setFocus(); // Et on remet le curseur à l'intérieur
-    }
-     else if(radioButton_Aut->isChecked()){
-    who="aut";
-    listeMessages->append(tr("<em>Autre...</em>"));
-    messageAEnvoyer = who + messageAEnvoyer;
-    listeMessages->append(messageAEnvoyer);
-    out << (quint16) 0;
-    out <<messageAEnvoyer;
-    out.device()->seek(0);
-    out << (quint16) (paquet.size() - sizeof(quint16));
-
-    socket->write(paquet); // On envoie le paquet
-
-    message->clear(); // On vide la zone d'écriture du message
-    message->setFocus(); // Et on remet le curseur à l'intérieur
-
-    }else{
-    listeMessages->append(tr("<em>Veuillez cocher un bouton...</em>"));
-
-    }
-
+    message->clear(); // On vide la zone d'ï¿½criture du message
+    message->setFocus(); // Et on remet le curseur ï¿½ l'intï¿½rieur
 }
 
-// Appuyer sur la touche Entrée a le même effet que cliquer sur le bouton "Envoyer"
+// Appuyer sur la touche Entrï¿½e a le mï¿½me effet que cliquer sur le bouton "Envoyer"
 void FenClient::on_message_returnPressed()
 {
     on_boutonEnvoyer_clicked();
 }
 
-// On a reçu un paquet (ou un sous-paquet)
+// On a reï¿½u un paquet (ou un sous-paquet)
 void FenClient::donneesRecues()
 {
-    /* Même principe que lorsque le serveur reçoit un paquet :
-    On essaie de récupérer la taille du message
-    Une fois qu'on l'a, on attend d'avoir reçu le message entier (en se basant sur la taille annoncée tailleMessage)
+    /* Mï¿½me principe que lorsque le serveur reï¿½oit un paquet :
+    On essaie de rï¿½cupï¿½rer la taille du message
+    Une fois qu'on l'a, on attend d'avoir reï¿½u le message entier (en se basant sur la taille annoncï¿½e tailleMessage)
     */
     QDataStream in(socket);
 
@@ -124,68 +72,47 @@ void FenClient::donneesRecues()
         return;
 
 
-    // Si on arrive jusqu'à cette ligne, on peut récupérer le message entier
+    // Si on arrive jusqu'ï¿½ cette ligne, on peut rï¿½cupï¿½rer le message entier
     QString messageRecu;
     in >> messageRecu;
 
     // On affiche le message sur la zone de Chat
     listeMessages->append(messageRecu);
 
-    // On remet la taille du message à 0 pour pouvoir recevoir de futurs messages
+    // On remet la taille du message ï¿½ 0 pour pouvoir recevoir de futurs messages
     tailleMessage = 0;
 }
 
-// Ce slot est appelé lorsque la connexion au serveur a réussi
+// Ce slot est appelï¿½ lorsque la connexion au serveur a rï¿½ussi
 void FenClient::connecte()
 {
-    listeMessages->append(tr("<em>Connexion réussie !</em>"));
+    listeMessages->append(tr("<em>Connexion rï¿½ussie !</em>"));
     boutonConnexion->setEnabled(true);
 }
 
-// Ce slot est appelé lorsqu'on est déconnecté du serveur
+// Ce slot est appelï¿½ lorsqu'on est dï¿½connectï¿½ du serveur
 void FenClient::deconnecte()
 {
-    listeMessages->append(tr("<em>Déconnecté du serveur</em>"));
+    listeMessages->append(tr("<em>Dï¿½connectï¿½ du serveur</em>"));
 }
 
-// Ce slot est appelé lorsqu'il y a une erreur
+// Ce slot est appelï¿½ lorsqu'il y a une erreur
 void FenClient::erreurSocket(QAbstractSocket::SocketError erreur)
 {
-    switch(erreur) // On affiche un message différent selon l'erreur qu'on nous indique
+    switch(erreur) // On affiche un message diffï¿½rent selon l'erreur qu'on nous indique
     {
         case QAbstractSocket::HostNotFoundError:
-            listeMessages->append(tr("<em>ERREUR : le serveur n'a pas pu être trouvé. Vérifiez l'IP et le port.</em>"));
+            listeMessages->append(tr("<em>ERREUR : le serveur n'a pas pu ï¿½tre trouvï¿½. Vï¿½rifiez l'IP et le port.</em>"));
             break;
         case QAbstractSocket::ConnectionRefusedError:
-            listeMessages->append(tr("<em>ERREUR : le serveur a refusé la connexion. Vérifiez si le programme \"serveur\" a bien été lancé. Vérifiez aussi l'IP et le port.</em>"));
+            listeMessages->append(tr("<em>ERREUR : le serveur a refusï¿½ la connexion. Vï¿½rifiez si le programme \"serveur\" a bien ï¿½tï¿½ lancï¿½. Vï¿½rifiez aussi l'IP et le port.</em>"));
             break;
         case QAbstractSocket::RemoteHostClosedError:
-            listeMessages->append(tr("<em>ERREUR : le serveur a coupé la connexion.</em>"));
+            listeMessages->append(tr("<em>ERREUR : le serveur a coupï¿½ la connexion.</em>"));
             break;
         default:
             listeMessages->append(tr("<em>ERREUR : ") + socket->errorString() + tr("</em>"));
     }
 
     boutonConnexion->setEnabled(true);
-}
-
-
-void FenClient::on_radioButton_Po_toggled(bool checked)
-{
-
-}
-
-void FenClient::on_radioButton_Med_clicked()
-{
-
-}
-
-void FenClient::on_radioButton_Aut_clicked()
-{
-
-}
-
-void FenClient::on_radioButton_Aut_toggled(bool checked)
-{
-
 }

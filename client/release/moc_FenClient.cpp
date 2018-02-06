@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_FenClient_t {
-    QByteArrayData data[16];
-    char stringdata0[286];
+    QByteArrayData data[11];
+    char stringdata0[171];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,23 +39,14 @@ QT_MOC_LITERAL(6, 102, 8), // "connecte"
 QT_MOC_LITERAL(7, 111, 10), // "deconnecte"
 QT_MOC_LITERAL(8, 122, 12), // "erreurSocket"
 QT_MOC_LITERAL(9, 135, 28), // "QAbstractSocket::SocketError"
-QT_MOC_LITERAL(10, 164, 6), // "erreur"
-QT_MOC_LITERAL(11, 171, 25), // "on_radioButton_Po_toggled"
-QT_MOC_LITERAL(12, 197, 7), // "checked"
-QT_MOC_LITERAL(13, 205, 26), // "on_radioButton_Aut_toggled"
-QT_MOC_LITERAL(14, 232, 26), // "on_radioButton_Aut_clicked"
-QT_MOC_LITERAL(15, 259, 26) // "on_radioButton_Med_clicked"
+QT_MOC_LITERAL(10, 164, 6) // "erreur"
 
     },
     "FenClient\0on_boutonConnexion_clicked\0"
     "\0on_boutonEnvoyer_clicked\0"
     "on_message_returnPressed\0donneesRecues\0"
     "connecte\0deconnecte\0erreurSocket\0"
-    "QAbstractSocket::SocketError\0erreur\0"
-    "on_radioButton_Po_toggled\0checked\0"
-    "on_radioButton_Aut_toggled\0"
-    "on_radioButton_Aut_clicked\0"
-    "on_radioButton_Med_clicked"
+    "QAbstractSocket::SocketError\0erreur"
 };
 #undef QT_MOC_LITERAL
 
@@ -65,7 +56,7 @@ static const uint qt_meta_data_FenClient[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -73,17 +64,13 @@ static const uint qt_meta_data_FenClient[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   69,    2, 0x08 /* Private */,
-       3,    0,   70,    2, 0x08 /* Private */,
-       4,    0,   71,    2, 0x08 /* Private */,
-       5,    0,   72,    2, 0x08 /* Private */,
-       6,    0,   73,    2, 0x08 /* Private */,
-       7,    0,   74,    2, 0x08 /* Private */,
-       8,    1,   75,    2, 0x08 /* Private */,
-      11,    1,   78,    2, 0x08 /* Private */,
-      13,    1,   81,    2, 0x08 /* Private */,
-      14,    0,   84,    2, 0x08 /* Private */,
-      15,    0,   85,    2, 0x08 /* Private */,
+       1,    0,   49,    2, 0x08 /* Private */,
+       3,    0,   50,    2, 0x08 /* Private */,
+       4,    0,   51,    2, 0x08 /* Private */,
+       5,    0,   52,    2, 0x08 /* Private */,
+       6,    0,   53,    2, 0x08 /* Private */,
+       7,    0,   54,    2, 0x08 /* Private */,
+       8,    1,   55,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -93,10 +80,6 @@ static const uint qt_meta_data_FenClient[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, 0x80000000 | 9,   10,
-    QMetaType::Void, QMetaType::Bool,   12,
-    QMetaType::Void, QMetaType::Bool,   12,
-    QMetaType::Void,
-    QMetaType::Void,
 
        0        // eod
 };
@@ -114,10 +97,6 @@ void FenClient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 4: _t->connecte(); break;
         case 5: _t->deconnecte(); break;
         case 6: _t->erreurSocket((*reinterpret_cast< QAbstractSocket::SocketError(*)>(_a[1]))); break;
-        case 7: _t->on_radioButton_Po_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 8: _t->on_radioButton_Aut_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 9: _t->on_radioButton_Aut_clicked(); break;
-        case 10: _t->on_radioButton_Med_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -159,13 +138,13 @@ int FenClient::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 7;
     }
     return _id;
 }

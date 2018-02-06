@@ -9,7 +9,7 @@ SqlConnection::SqlConnection()
 }
 
 
-QString SqlConnection::connection(QString id){// id---> mess (mess0/mess1)
+QString SqlConnection::connection(QString mdp){// mdp---> mess (mess0)
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("localhost");
     db.setDatabaseName("bdd_pri");
@@ -33,21 +33,34 @@ QString SqlConnection::connection(QString id){// id---> mess (mess0/mess1)
     P[2]=4;
     P[3]=5;
     P[4]=6;
+    /*
+
+    DEFINIR ID ICI
+
+    */
     //int i=0;
-    QString qui = id.left(3);
-    id = id.right(3);
+    /*QString qui = mdp.left(3); //med mis automatique ou med au dbt du mdp
+    mdp = mdp.right(3);*/
     QString rec;
     rec="";
     if(!db.open())
     {
          //QMessageBox::critical(this, "Erreur", "Erreur de connexion à la bdd.");
     } else {
+        QSqlQuery query2("SELECT * FROM mdp where mdp= ? ");//id--> id  Ici associer la clé à l'id pour identifier les données à afficher.
+        query.addBindValue(mdp.toInt());//Transformation d'id en int pour l'utiliser dans le programme ,!!!! verifier si int marche avec clé binaire
         QSqlQuery query("SELECT * FROM clients where id= ? ");//id--> id  Ici associer la clé à l'id pour identifier les données à afficher.
         query.addBindValue(id.toInt());//Transformation d'id en int pour l'utiliser dans le programme ,!!!! verifier si int marche avec clé binaire
         if (! query.exec()){
              return QString(); // erreur
         }
-
+        if (! query2.exec()){
+             return QString(); // erreur
+        }
+    if(query2 == false){
+        cout<<'Mot de passe incorrecte';
+    }
+    if(query2 == true){
         if(query.first()){
            /*   while(i<7){//  Recuperation des 7 lignes de la table client
                 rec.append(query.value(i).toString());
@@ -83,6 +96,7 @@ QString SqlConnection::connection(QString id){// id---> mess (mess0/mess1)
              //   rec.append(query.value(i).toString());
 
               }
+    }
             //}
         return rec;
        // }
