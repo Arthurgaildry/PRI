@@ -2,6 +2,9 @@
 #include <QSqlDatabase>
 #include <QMessageBox>
 #include <QSqlQuery>
+#include<iostream>
+
+using namespace std;
 
 SqlConnection::SqlConnection()
 {
@@ -38,9 +41,10 @@ QString SqlConnection::connection(QString mdp){// mdp---> mess (mess0)
     DEFINIR ID ICI
 
     */
+    int id=1;
     //int i=0;
-    /*QString qui = mdp.left(3); //med mis automatique ou med au dbt du mdp
-    mdp = mdp.right(3);*/
+    QString qui = mdp.left(3); //med mis automatique ou med au dbt du mdp
+    mdp = mdp.right(3);
     QString rec;
     rec="";
     if(!db.open())
@@ -48,19 +52,19 @@ QString SqlConnection::connection(QString mdp){// mdp---> mess (mess0)
          //QMessageBox::critical(this, "Erreur", "Erreur de connexion à la bdd.");
     } else {
         QSqlQuery query2("SELECT * FROM mdp where mdp= ? ");//id--> id  Ici associer la clé à l'id pour identifier les données à afficher.
-        query.addBindValue(mdp.toInt());//Transformation d'id en int pour l'utiliser dans le programme ,!!!! verifier si int marche avec clé binaire
+        query2.addBindValue(mdp.toInt());//Transformation d'id en int pour l'utiliser dans le programme ,!!!! verifier si int marche avec clé binaire
         QSqlQuery query("SELECT * FROM clients where id= ? ");//id--> id  Ici associer la clé à l'id pour identifier les données à afficher.
-        query.addBindValue(id.toInt());//Transformation d'id en int pour l'utiliser dans le programme ,!!!! verifier si int marche avec clé binaire
+        query.addBindValue(id);//Transformation d'id en int pour l'utiliser dans le programme ,!!!! verifier si int marche avec clé binaire
         if (! query.exec()){
              return QString(); // erreur
         }
         if (! query2.exec()){
              return QString(); // erreur
         }
-    if(query2 == false){
+    if(!query2.exec()){
         cout<<'Mot de passe incorrecte';
     }
-    if(query2 == true){
+    if(query2.exec()){
         if(query.first()){
            /*   while(i<7){//  Recuperation des 7 lignes de la table client
                 rec.append(query.value(i).toString());
